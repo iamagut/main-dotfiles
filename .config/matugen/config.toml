@@ -2,12 +2,24 @@
 mode = "wallpaper"
 
 [config.wallpaper]
-command = "swww img {wallpaper} --transition-fps 60"
+command = "awww img {wallpaper}"
+
+[templates.hyprland]
+input_path = '~/.config/matugen/templates/hyprland.lua'
+output_path = '~/.config/hypr/config/colors.lua'
 
 [templates.kitty]
 input_path = '~/.config/matugen/templates/kitty-colors.conf'
 output_path = '~/.config/kitty/colors.conf'
 post_hook = "pkill -SIGUSR1 kitty"
+
+[templates.vscode-raw]
+input_path = './templates/vscode-colors'
+output_path = '~/.cache/matugen/vscode-colors'
+
+[templates.vscode-json]
+input_path = './templates/vscode-colors.json'
+output_path = '~/.cache/matugen/vscode-colors.json'
 
 [templates.cava]
 input_path = '~/.config/matugen/templates/cava-colors.ini'
