@@ -34,7 +34,7 @@ hl.bind(mainMod .. " + CTRL + R", hl.dsp.exec_cmd(home .. "/.config/waybar/scrip
 
 -- ── Clipboard / screenshot / colour picker
 hl.bind(mainMod .. " + ALT + V", hl.dsp.exec_cmd("cliphist wipe"))
-hl.bind(mainMod .. " + P", hl.dsp.exec_cmd('grim -g "$(slurp)" - | wl-copy'))
+hl.bind(mainMod .. " + P", hl.dsp.exec_cmd('hyprshot -m region --raw | satty --filename -'))
 hl.bind(mainMod .. " + SHIFT + P", hl.dsp.exec_cmd("hyprpicker -an"))
 
 -- ── Rofi & utility scripts ───────────────────────────────────────

@@ -53,7 +53,7 @@ hl.window_rule({
 })
 
 hl.window_rule({
-	match = { class = "qalculate-gtk" },
+	match = { class = "com.gabm.satty" },
 	float = true,
 	center = true,
 })
