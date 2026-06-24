@@ -36,7 +36,7 @@ input_path = '~/.config/matugen/templates/rofi-colors.rasi'
 output_path = '~/.config/rofi/colors.rasi'
 
 [templates.swaync]
-input_path = '~/.config/matugen/templates/colors.css'
+input_path = '~/.config/matugen/templates/swaync.css'
 output_path = '~/.config/swaync/colors.css'
 post_hook = "swaync-client -rs"
 
@@ -59,3 +59,8 @@ output_path = '~/.config/vesktop/themes/colors.css'
 [templates.btop]
 input_path = '~/.config/matugen/templates/colors.css'
 output_path = '~/.config/btop/themes/matugen.theme'
+
+[templates.quickshell]
+input_path = '~/.config/matugen/templates/quickshell.json'
+output_path = '~/.local/state/quickshell/generated/colors.json'
+post_hook = "~/.config/quickshell/reload-colors.sh"

@@ -63,7 +63,7 @@ hl.bind("ALT + Tab", function()
 end)
 
 -- ── Resize (keyboard) ────────────────────────────────────────────
-hl.bind("ALT + hyphen", hl.dsp.submap("resize"))
+hl.bind("ALT + R", hl.dsp.submap("resize"))
 
 -- Start a submap called "resize".
 hl.define_submap("resize", function()

@@ -1,0 +1,14 @@
+@define-color center-bg                 {{colors.surface.default.rgba | set_alpha: 1}};
+@define-color notification-bg           {{colors.surface.default.rgba | set_alpha: 1}};
+@define-color center-notification-bg    {{colors.surface_bright.default.rgba | set_alpha: 1}};
+@define-color background                {{colors.surface.default.rgba | set_alpha: 1}};
+@define-color background-alt            {{colors.surface_bright.default.hex}};
+@define-color text                      {{colors.on_surface.default.hex}};
+@define-color text-alt                  {{colors.on_surface_variant.default.hex}};
+@define-color selected                  alpha(@text-alt, .4);
+@define-color hover                     alpha(@selected, .4);
+@define-color urgent                    @text-alt;
+
+<* for name, value in colors *>
+    @define-color {{name}} {{value.default.hex}};
+<* endfor *>

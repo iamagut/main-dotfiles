@@ -7,7 +7,7 @@
 local M = {
     mainMod      = "SUPER",
     terminal     = "kitty",
-    fileManager  = "kitty -e yazi",
+    fileManager  = "thunar",
     menu         = "rofi -show drun",
     browser      = "vivaldi --password-store=basic",
     editor       = "codium",
