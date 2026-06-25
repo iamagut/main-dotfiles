@@ -1,0 +1,89 @@
+@import "colors.css";
+
+* {
+    all: unset;
+    font-family: "JetBrainsMono Nerd Font" ,"Font Awesome 6 Free", sans-serif;
+}
+
+window#waybar {
+    border-radius: 0 0 10px 10px;
+    color: white;
+    background: @background;
+    font-weight: bold;
+}
+
+tooltip {
+    background: @background;
+    border-radius: 10px;
+}
+tooltip label {
+    color: @primary;
+}
+
+#workspaces {
+    padding: 2px 2px;
+    margin: 11px 0px;
+    border-radius: 99px;
+    min-width: 100px;
+    font-size: 0.4rem;
+}
+#workspaces button {
+    padding: 0 5px;
+    margin: 0 2px;
+    border-radius: 99px;
+    min-width: 4px;
+    background: @surface_bright;
+    color: transparent;
+}
+#workspaces button.active {
+    background-color: @primary;
+    color: transparent;
+    border-radius: 99px;
+    border: 0px;
+    min-width: 1.4rem;
+    transition: none;
+}
+#workspaces button.focused {
+    background-color: @primary;
+    border-bottom: 3px solid white;
+}
+
+#clock,
+#pulseaudio,
+#backlight,
+#network,
+#backlight,
+#window,
+#clock,
+#battery,
+#custom-update,
+#idle_inhibitor.deactivated,
+#idle_inhibitor.activated:hover {
+    background-color: transparent;
+    color: @primary;
+    padding: 0 15px;
+    margin: 0 2px;
+    border-radius: 10px;
+}
+
+#custom-notification {
+    background-color: transparent;
+    color: @primary;
+    padding: 0 13px;
+    margin: 0 2px;
+    border-radius: 10px;
+}
+#custom-notification.dnd {
+    color: #7E643C;
+}
+#custom-notification.notification {
+    background-color: transparent;
+    color: @on_background;
+}
+
+window#waybar.empty #window {
+    background-color: transparent;
+    padding: 0;
+    margin: 0;
+    border: 0;
+}
