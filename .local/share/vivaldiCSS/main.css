@@ -1,0 +1,21 @@
+/* Vivaldi logo */
+.vivaldi-v svg {
+    background: radial-gradient(white, white 50%, transparent 50%);
+    fill: var(--colorAccentBg);
+}
+
+/* Add drop-shadow to some buttons */
+#switch button img,
+.tab:not(.active) .favicon img,
+.OmniLinkItem-Favicon img,
+.SiteInfoButton-Favicon,
+.item-icon {
+    filter: drop-shadow(0 0 1px white);
+}
+
+/* Active tab
+#browser #tabs-container .tab.active {
+    color: var(--colorHighlightFg);
+    background: var(--colorAccentBgAlpha);
+    foreground: var(--colorHighlightFg);
+} */
