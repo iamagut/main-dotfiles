@@ -64,3 +64,15 @@ output_path = '~/.config/btop/themes/matugen.theme'
 input_path = '~/.config/matugen/templates/quickshell.json'
 output_path = '~/.local/state/quickshell/generated/colors.json'
 post_hook = "~/.config/quickshell/reload-colors.sh"
+
+[templates.vivaldi]
+input_path = '~/.config/matugen/templates/vivaldi.css'
+output_path = '~/Documents/VivaldiCSS'
+
+[templates.kvantum_kvconfig]
+input_path = './templates/kvantum-colors.kvconfig'
+output_path = '~/.config/Kvantum/matugen/matugen.kvconfig'
+
+[templates.kvantum_svg]
+input_path = './templates/kvantum-colors.svg'
+output_path = '~/.config/Kvantum/matugen/matugen.svg'
