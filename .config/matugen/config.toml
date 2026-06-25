@@ -67,7 +67,7 @@ post_hook = "~/.config/quickshell/reload-colors.sh"
 
 [templates.vivaldi]
 input_path = '~/.config/matugen/templates/vivaldi.css'
-output_path = '~/Documents/VivaldiCSS'
+output_path = '~/.local/share/vivaldiCSS/colors.css'
 
 [templates.kvantum_kvconfig]
 input_path = './templates/kvantum-colors.kvconfig'
