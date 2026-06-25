@@ -1,0 +1,117 @@
+{
+    "style": "~/.config/waybar/styles/unified.css",
+    "width": 1000,
+    "layer": "top",
+    
+    "modules-left": [
+        "pulseaudio",
+        "hyprland/workspaces"
+    ],
+    "modules-center": [
+        "clock"
+    ],
+    "modules-right": [
+        "network",
+        "custom/notification"
+    ],
+
+    "clock": {
+        "format": "<span font='10' rise='1000'></span>{:%H:%M}",
+        "format-alt": "{:%a, %d. %b  %H:%M}",
+        "tooltip-format": "<tt><small>{calendar}</small></tt>",
+        "calendar": {
+            "mode": "year",
+            "mode-mon-col": 3,
+            "weeks-pos": "right",
+            "on-scroll": 1,
+            "format": {
+                "months": "<span color='#ffead3'><b>{}</b></span>",
+                "days": "<span color='#ecc6d9'><b>{}</b></span>",
+                "weeks": "<span color='#99ffdd'><b>W{}</b></span>",
+                "weekdays": "<span color='#ffcc66'><b>{}</b></span>",
+                "today": "<span color='#ff6699'><b><u>{}</u></b></span>"
+            }
+        },
+        "actions": {
+            "on-scroll-up": "tz_up",
+            "on-scroll-down": "tz_down",
+            "on-scroll-up": "shift_up",
+            "on-scroll-down": "shift_down"
+        }
+    },
+
+    "pulseaudio": {
+        "format": "<span font='10'>{icon} </span>{volume}%",
+        "format-bluetooth": " {volume}%",
+        "format-muted": "",
+        "format-icons": {
+            "headphone": "",
+            "hands-free": "",
+            "headset": "",
+            "phone": "",
+            "phone-muted": "",
+            "portable": "",
+            "car": "",
+            "default": [
+                "",
+                "",
+                ""
+            ]
+        },
+        "scroll-step": 1,
+        "on-click": "pavucontrol",
+        "ignored-sinks": [
+            "Easy Effects Sink"
+        ]
+    },
+
+    "network": {
+        "format": "{ifname}",
+        "format-wifi": "<span font='10' rise='1000'>󰤨 </span>{essid}",
+        "format-ethernet": "<span font='10' rise='1000'>󰊗 </span>{ipaddr}/{cidr} ",
+        "format-disconnected": "", // An empty format will hide the module.
+        "tooltip-format": "<span font='10' rise='1000'>󰊗 </span>{ifname} via {gwaddr}",
+        "tooltip-format-wifi": "<span font='10' rise='1000'>󰤨 </span>{essid} ({signalStrength}%)",
+        "tooltip-format-ethernet": "<span font='10' rise='1000'> </span>{ifname}",
+        "tooltip-format-disconnected": "Disconnected",
+        "max-length": 45,
+        "on-click": "nm-connection-editor"
+    },
+
+    "custom/notification": {
+        "tooltip": true,
+        "format": "<span font='10'>{icon}</span>",
+        "format-icons": {
+            "none": "",
+            "notification": "󱅫",
+            "dnd-notification": "",
+            "dnd-none": "󰂛",
+            "inhibited-notification": "",
+            "inhibited-none": "",
+            "dnd-inhibited-notification": "",
+            "dnd-inhibited-none": " "
+        },
+        "exec": "swaync-client -swb",
+        "on-click": "sleep 0.1; swaync-client -t -sw",
+        "on-click-right": "swaync-client -d",
+        "return-type": "json",
+        "exec-if": "which swaync-client"
+    },
+
+    "backlight": {
+        "device": "intel_backlight",
+        "format": "<span font='10' rise='1000'>{icon}</span>   {percent}%",
+        "format-icons": ["", "", "", "", "", "", "", "", ""]
+    },
+
+    "hyprland/workspaces": {
+        "format": "{icon}",
+        "format-icons": {
+            "1": "",
+            "2": "",
+            "3": "",
+            "4": "",
+            "5": ""
+        }
+    }
+}
