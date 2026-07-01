@@ -1,39 +1,23 @@
 {
-    "style": "~/.config/waybar/styles/compact.css",
-
-    "height": 27,
-    "margin-top": 4,
-    "margin-bottom": -1,
+    "style": "~/.config/waybar/styles/unified.css",
+    "width": 1000,
     "layer": "top",
+    
     "modules-left": [
-        "hyprland/workspaces",
-        "hyprland/window"
+        "pulseaudio",
+        "hyprland/workspaces"
     ],
     "modules-center": [
-        "clock",
-        "custom/update"
+        "clock"
     ],
     "modules-right": [
-        "idle_inhibitor",
-        "pulseaudio",
         "network",
         "battery",
         "custom/notification"
     ],
 
-    "battery": {
-        "format": "<span font='10' rise='1000'>{icon}</span>  {capacity}%",
-        "format-icons": [
-            "󰁺",
-            "󰁼",
-            "󰁾",
-            "󰂀",
-            "󰁹"
-        ]
-    },
-
     "clock": {
-        "format": "<span font='10' rise='1000'>󰥔 </span>{:%H:%M}",
+        "format": "<span font='10' rise='1000'></span>{:%H:%M}",
         "format-alt": "{:%a, %d. %b  %H:%M}",
         "tooltip-format": "<tt><small>{calendar}</small></tt>",
         "calendar": {
@@ -59,14 +43,12 @@
 
     "pulseaudio": {
         "format": "<span font='10'>{icon} </span>{volume}%",
-        "format-bluetooth": "{icon} {volume}%",
+        "format-bluetooth": " {volume}%",
         "format-muted": "",
         "format-icons": {
-            "alsa_output.pci-0000_00_1f.3.analog-stereo": "",
-            "alsa_output.pci-0000_00_1f.3.analog-stereo-muted": "",
             "headphone": "",
             "hands-free": "",
-            "headset": "",
+            "headset": "",
             "phone": "",
             "phone-muted": "",
             "portable": "",
@@ -85,9 +67,8 @@
     },
 
     "network": {
-        "interface": "wlan0",
         "format": "{ifname}",
-        "format-wifi": "<span font='10' rise='1000'>󰤨 </span>{essid} ({signalStrength}%)",
+        "format-wifi": "<span font='10' rise='1000'>󰤨 </span>{essid}",
         "format-ethernet": "<span font='10' rise='1000'>󰊗 </span>{ipaddr}/{cidr} ",
         "format-disconnected": "", // An empty format will hide the module.
         "tooltip-format": "<span font='10' rise='1000'>󰊗 </span>{ifname} via {gwaddr}",
@@ -96,14 +77,6 @@
         "tooltip-format-disconnected": "Disconnected",
         "max-length": 45,
         "on-click": "nm-connection-editor"
-    },
-
-    "idle_inhibitor": {
-        "format": "<span font='10'>{icon} </span>Caffiene Mode",
-        "format-icons": {
-            "activated": "󰅶",
-            "deactivated": "󰛊"
-        }
     },
 
     "custom/notification": {
@@ -126,14 +99,6 @@
         "exec-if": "which swaync-client"
     },
 
-    "custom/update": {
-    "exec": "~/.config/waybar/scripts/update.sh",
-    "interval": 60,  
-    "return-type": "json",
-    "format": "<span font='10' rise='1000'> </span>{}",
-    "on-click": "kitty -e sh -c 'yay -Syu'"
-    },
-
     "backlight": {
         "device": "intel_backlight",
         "format": "<span font='10' rise='1000'>{icon}</span>   {percent}%",
@@ -142,14 +107,23 @@
 
     "hyprland/workspaces": {
         "format": "{icon}",
-        "persistent-workspaces": {
-            "*": 5
+        "format-icons": {
+            "1": "",
+            "2": "",
+            "3": "",
+            "4": "",
+            "5": ""
         }
     },
 
-    "hyprland/window": {
-        "format": "{}",
-        "separate-outputs": true,
-        "max-length": 30
+    "battery": {
+        "format": "<span font='10' rise='1000'>{icon}</span>  {capacity}%",
+        "format-icons": [
+            "󰁺",
+            "󰁼",
+            "󰁾",
+            "󰂀",
+            "󰁹"
+        ]
     }
 }
