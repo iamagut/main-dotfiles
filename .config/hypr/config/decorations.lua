@@ -11,7 +11,7 @@ hl.config({
         gaps_in  = 4,
         gaps_out = 7,
 
-        border_size = 3,
+        border_size = 0,
 
         col = {
             -- Gradient: Catppuccin Mauve → deep violet at 45 °
