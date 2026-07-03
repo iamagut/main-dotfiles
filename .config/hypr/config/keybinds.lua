@@ -74,7 +74,7 @@ hl.define_submap("resize", function()
 	hl.bind("down", hl.dsp.window.resize({ x = 0, y = -10, relative = true }), { repeating = true })
 
 	-- Use `reset` to go back to the global submap
-	hl.bind("period", hl.dsp.submap("reset"))
+	hl.bind("Escape", hl.dsp.submap("reset"))
 end)
 
 -- ── Workspaces ───────────────────────────────────────────────────
