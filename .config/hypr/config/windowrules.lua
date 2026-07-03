@@ -58,6 +58,13 @@ hl.window_rule({
 	center = true,
 })
 
+hl.window_rule({
+	match = { class = "org.gnome.FileRoller" },
+	float = true,
+	size = "850 600",
+	center = true,
+})
+
 -- ── Picture-in-Picture ───────────────────────────────────────────
 hl.window_rule({
 	name = "pip-tag",
