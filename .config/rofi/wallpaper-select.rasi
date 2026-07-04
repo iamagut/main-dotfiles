@@ -1,0 +1,95 @@
+/**
+ * Wallpaper Selector Rofi Theme
+ * Imports matugen generated colors and provides a visual grid.
+ */
+
+@import "~/.config/rofi/colors.rasi"
+
+* {
+    font:                        "JetBrainsMono Nerd Font Propo 12";
+    background-color:            transparent;
+    text-color:                  @primary;
+}
+
+window {
+    transparency:                "real";
+    fullscreen:                  false;
+    enabled:                     true;
+    cursor:                      "default";
+    width:                       1050px;
+    height:                      800px;
+    border:                      3px;
+    border-radius:               20px;
+    border-color:                @secondary;
+    background-color:            @surface-container-lowest;
+}
+
+mainbox {
+    padding:                     24px;
+    spacing:                     16px;
+    children:                    [ inputbar, listview ];
+    background-color:            transparent;
+}
+
+inputbar {
+    background-color:            @surface-container-low;
+    border-radius:               12px;
+    padding:                     12px 16px;
+    spacing:                     8px;
+    children:                    [ "prompt", "entry" ];
+}
+
+prompt {
+    text-color:                  @primary;
+    background-color:            transparent;
+}
+
+entry {
+    placeholder:                 "Search wallpapers...";
+    placeholder-color:           @outline;
+    text-color:                  @primary;
+    background-color:            transparent;
+}
+
+listview {
+    columns:                     4;
+    lines:                       3;
+    cycle:                       true;
+    dynamic:                     true;
+    scrollbar:                   false;
+    layout:                      vertical;
+    flow:                        horizontal;
+    spacing:                     16px;
+    background-color:            transparent;
+}
+
+element {
+    orientation:                 vertical;
+    padding:                     12px;
+    border-radius:               12px;
+    background-color:            @surface-container-low;
+    text-color:                  @primary;
+    cursor:                      pointer;
+}
+
+element selected {
+    background-color:            @primary;
+    text-color:                  @on-primary;
+}
+
+element-icon {
+    size:                        160px;
+    horizontal-align:            0.5;
+    vertical-align:              0.5;
+    cursor:                      inherit;
+    background-color:            transparent;
+}
+
+element-text {
+    horizontal-align:            0.5;
+    vertical-align:              0.5;
+    cursor:                      inherit;
+    text-color:                  inherit;
+    padding:                     8px 0px 0px 0px;
+    background-color:            transparent;
+}
