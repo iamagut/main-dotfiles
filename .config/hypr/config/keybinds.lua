@@ -26,12 +26,12 @@ hl.bind(mainMod .. " + U", hl.dsp.window.pseudo()) -- dwindle pseudo-tile
 hl.bind(mainMod .. " + J", hl.dsp.layout("togglesplit")) -- dwindle
 hl.bind(mainMod .. " + L", hl.dsp.exec_cmd("hyprlock"))
 
--- ── Notifications / bars
+-- ── Notifications / bars ─────────────────────────────────────────
 hl.bind(mainMod .. " + SHIFT + A", hl.dsp.exec_cmd("swaync-client -t -sw"))
 hl.bind(mainMod .. " + ALT + R", hl.dsp.exec_cmd(home .. "/.config/waybar/scripts/waybar.sh"))
 hl.bind(mainMod .. " + CTRL + R", hl.dsp.exec_cmd(home .. "/.config/waybar/scripts/layouts.sh"))
 
--- ── Clipboard / screenshot / colour picker
+-- ── Clipboard / screenshot / colour picker ───────────────────────
 hl.bind(mainMod .. " + CTRL + ALT + V", hl.dsp.exec_cmd("cliphist wipe"))
 hl.bind(mainMod .. " + P", hl.dsp.exec_cmd('hyprshot -m region --raw | satty --filename -'))
 hl.bind(mainMod .. " + SHIFT + P", hl.dsp.exec_cmd("hyprpicker -an"))
@@ -105,7 +105,7 @@ hl.bind(mainMod .. " + G", hl.dsp.group.toggle())
 hl.bind("ALT + Tab", hl.dsp.exec_cmd("hyprctl dispatch changegroupactive"))
 -- hl.bind("ALT + Tab", hl.dsp.exec_cmd("hyprctl dispatch cyclenext"))
 
--- ── Media / volume / brightness ─────────────────────────────────
+-- ── Media / volume / brightness ──────────────────────────────────
 hl.bind(
 	"XF86AudioRaiseVolume",
 	hl.dsp.exec_cmd("wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 5%+"),
@@ -129,13 +129,13 @@ hl.bind(
 hl.bind("XF86MonBrightnessUp", hl.dsp.exec_cmd("brightnessctl -e4 -n2 set 5%+"), { locked = true, repeating = true })
 hl.bind("XF86MonBrightnessDown", hl.dsp.exec_cmd("brightnessctl -e4 -n2 set 5%-"), { locked = true, repeating = true })
 
--- ── Requires playerctl
+-- ── Requires playerctl ───────────────────────────────────────────
 hl.bind("XF86AudioNext", hl.dsp.exec_cmd("playerctl next"), { locked = true })
 hl.bind("XF86AudioPause", hl.dsp.exec_cmd("playerctl play-pause"), { locked = true })
 hl.bind("XF86AudioPlay", hl.dsp.exec_cmd("playerctl play-pause"), { locked = true })
 hl.bind("XF86AudioPrev", hl.dsp.exec_cmd("playerctl previous"), { locked = true })
 
--- ── Layout Switching ──────────────────────────────────────────────────────
+-- ── Layout Switching ─────────────────────────────────────────────
 hl.bind(mainMod .. " + Y", function()
 	local layouts = { "scrolling", "dwindle" }
 	local workspace = hl.get_active_workspace()
