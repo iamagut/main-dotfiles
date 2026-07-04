@@ -5,3 +5,6 @@ if status is-interactive
 end
 
 starship init fish | source
+
+# Added by Antigravity CLI installer
+set -gx PATH "/home/iamagut/.local/bin" $PATH
