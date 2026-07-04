@@ -29,11 +29,10 @@ hl.bind(mainMod .. " + L", hl.dsp.exec_cmd("hyprlock"))
 -- ── Notifications / bars
 hl.bind(mainMod .. " + SHIFT + A", hl.dsp.exec_cmd("swaync-client -t -sw"))
 hl.bind(mainMod .. " + ALT + R", hl.dsp.exec_cmd(home .. "/.config/waybar/scripts/waybar.sh"))
-hl.bind(mainMod .. " + SHIFT + R", hl.dsp.exec_cmd(home .. "/.config/waybar/scripts/styles.sh"))
 hl.bind(mainMod .. " + CTRL + R", hl.dsp.exec_cmd(home .. "/.config/waybar/scripts/layouts.sh"))
 
 -- ── Clipboard / screenshot / colour picker
-hl.bind(mainMod .. " + ALT + V", hl.dsp.exec_cmd("cliphist wipe"))
+hl.bind(mainMod .. " + CTRL + ALT + V", hl.dsp.exec_cmd("cliphist wipe"))
 hl.bind(mainMod .. " + P", hl.dsp.exec_cmd('hyprshot -m region --raw | satty --filename -'))
 hl.bind(mainMod .. " + SHIFT + P", hl.dsp.exec_cmd("hyprpicker -an"))
 
