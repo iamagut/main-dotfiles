@@ -3,10 +3,13 @@ Yoink most off of ml4w and HyDE as a base and cobbled together into this pile of
 
 Some of the stuff are vibe coded and manually tweaked, and some are just straight from their respective documenteries.
 
+### Vivaldi:
+Enable vivaldi CSS thing and link it to the file in `~/.local/share/vivaldiCSS`
 
-- For Vivaldi: Enable vivaldi CSS thing and link it to the file in `~/.local/share/vivaldiCSS`
-- For Firefox: Put the `chrome/` folder into the current profile used in firefox. Go to `about:support` and then click on the <kbd>Open Directory</kbd>, toss the folder there.
+### Firefox
+Put the `chrome/` folder into the current profile used in firefox. Go to `about:support` and then click on the <kbd>Open Directory</kbd>, toss the folder there.
 
+### Wallpapers
 Get wallpapers from these cool repo to have something to work the matugen :)
 - [HyDE Gallery](https://github.com/Hyde-project/hyde-gallery) My favorite specifics
 - [dharmx walls](https://github.com/dharmx/walls)
