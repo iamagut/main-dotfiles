@@ -57,8 +57,9 @@ input_path = '~/.config/matugen/templates/vesktop-midnight.css'
 output_path = '~/.config/vesktop/themes/colors.css'
 
 [templates.btop]
-input_path = '~/.config/matugen/templates/colors.css'
+input_path = '~/.config/matugen/templates/btop.theme'
 output_path = '~/.config/btop/themes/matugen.theme'
+post_hook = 'pkill -USR2 btop || true'
 
 [templates.papirus-folders]
 input_path = '~/.config/matugen/templates/ works'
