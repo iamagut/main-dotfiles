@@ -109,7 +109,7 @@ output_path = '~/.config/Kvantum/matugen/matugen.kvconfig'
 input_path = './templates/kvantum-colors.svg'
 output_path = '~/.config/Kvantum/matugen/matugen.svg'
 
-### Browsers, uncomment whatever browser in use.
+### Browsers, uncomment whatever browser in use. ###
 
 # [templates.vivaldi]
 # input_path = '~/.config/matugen/templates/vivaldi.css'
