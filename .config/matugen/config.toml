@@ -101,10 +101,6 @@ input_path = "~/.config/matugen/templates/spicetify.ini"
 output_path = '~/.config/spicetify/Themes/SleekMatugen/color.ini'
 post_hook = 'spicetify watch -s 2>&1 | sed "/Reloaded Spotify/q"'
 
-[templates.vivaldi]
-input_path = '~/.config/matugen/templates/vivaldi.css'
-output_path = '~/.local/share/vivaldiCSS/colors.css'
-
 [templates.kvantum_kvconfig]
 input_path = './templates/kvantum-colors.kvconfig'
 output_path = '~/.config/Kvantum/matugen/matugen.kvconfig'
@@ -112,3 +108,14 @@ output_path = '~/.config/Kvantum/matugen/matugen.kvconfig'
 [templates.kvantum_svg]
 input_path = './templates/kvantum-colors.svg'
 output_path = '~/.config/Kvantum/matugen/matugen.svg'
+
+### Browsers, uncomment whatever browser in use.
+
+# [templates.vivaldi]
+# input_path = '~/.config/matugen/templates/vivaldi.css'
+# output_path = '~/.local/share/vivaldiCSS/colors.css'
+
+# [templates.pywalfox]
+# input_path = '~/.config/matugen/templates/pywalfox.json'
+# output_path = '~/.cache/wal/colors.json'
+# post_hook = 'pywalfox update'
