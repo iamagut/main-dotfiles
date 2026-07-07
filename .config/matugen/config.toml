@@ -120,3 +120,7 @@ output_path = '~/.config/Kvantum/matugen/matugen.svg'
 # input_path = '~/.config/matugen/templates/pywalfox.json'
 # output_path = '~/.cache/wal/colors.json'
 # post_hook = 'pywalfox update'
+
+# [templates.firefox-website-colors]
+# input_path = "~/.config/matugen/templates/firefox-colors.css"
+# output_path = "~/.config/mozilla/firefox/43cz52bg.default-release/chrome/colors.css"
