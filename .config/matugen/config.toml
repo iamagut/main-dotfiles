@@ -95,7 +95,6 @@ index = 1
 [templates.quickshell]
 input_path = '~/.config/matugen/templates/quickshell.json'
 output_path = '~/.local/state/quickshell/generated/colors.json'
-post_hook = "~/.config/quickshell/reload-colors.sh"
 
 [templates.spotify]
 input_path = "~/.config/matugen/templates/spicetify.ini"
