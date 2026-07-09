@@ -3,7 +3,7 @@ Yoink most off of ml4w and HyDE as a base and cobbled together into this pile of
 
 Some of the stuff are vibe coded and manually tweaked, and some are just straight from their respective documenteries.
 
-### Vivaldi:
+### Vivaldi
 Enable vivaldi CSS thing and link it to the file in `~/.local/share/vivaldiCSS`
 
 ### Firefox
