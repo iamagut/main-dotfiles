@@ -13,8 +13,8 @@ Row {
     readonly property real signal: active ? active.signalStrength : 0
 
     readonly property string icon: {
-        if (!Networking.wifiEnabled) return ''
-        if (!active) return ''
+        if (!Networking.wifiEnabled) return '󰤮'
+        if (!active) return '󰤯'
 
         let tier = signal >= 0.75 ? 4
                  : signal >= 0.5 ? 3
@@ -28,7 +28,7 @@ Row {
         text: wifiRoot.icon
         font.pixelSize: 14
         font.family: 'Jetbrains Mono Nerd Font Propo'
-        color: Nerworking.wifiEnabled ? 'white' : 'red'
+        color: Networking.wifiEnabled ? (wifiRoot.active ? Color.md3.primary : Color.md3.outline) : Color.md3.error
     }
 
     Text {
@@ -38,7 +38,7 @@ Row {
             return wifiRoot.active.name
         }
 
-        color: 'white'
+        color: wifiRoot.active ? Color.md3.on_surface : Color.md3.on_surface_variant
         font.pixelSize: 14
         font.family: 'Jetbrains Mono Nerd Font Propo'
     }

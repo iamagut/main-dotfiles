@@ -9,25 +9,24 @@ RowLayout {
 
     property var battery: UPower.displayDevice
     
-    property bool charging: battery.state === UPowerDeviceState.Charging
-    readonly property int level: Math.round(battery.percentage * 100)
+    readonly property bool charging: battery ? battery.state === UPowerDeviceState.Charging : false
+    readonly property int level: battery ? Math.round(battery.percentage * 100) : 0
 
     readonly property string icon: {
         if (charging) return String.fromCodePoint(0xF0084)
         
-        // Safe fallback glyph hex values so the function does not crash
-        if (level >= 100) return String.fromCodePoint(0xF0079) // 100% full icon
-        if (level < 10) return String.fromCodePoint(0xF0083)  // Empty warning icon
+        if (level >= 100) return String.fromCodePoint(0xF0079)
+        if (level < 10) return String.fromCodePoint(0xF0083)
         
         return String.fromCodePoint(0xF007A + Math.floor(level / 10) - 1)
     }
 
     Text {
         text: batteryRoot.icon
-        color: batteryRoot.charging ? '#74ff6f'
-                             : batteryRoot.level <= 15 ? '#ffe72d'
-                             : batteryRoot.level <= 30 ? '#d4ff65'
-                             : 'white'
+        color: batteryRoot.charging ? Color.md3.primary
+                             : batteryRoot.level <= 15 ? Color.md3.error
+                             : batteryRoot.level <= 30 ? Color.md3.tertiary
+                             : Color.md3.on_surface
 
         font.pixelSize: 14
         font.family: "Jetbrains Mono Nerd Font Propo"
@@ -35,7 +34,7 @@ RowLayout {
 
     Text {
         text: batteryRoot.level + '%'
-        color: "white"
+        color: Color.md3.on_surface
         font.pixelSize: 14
         font.family: "Jetbrains Mono Nerd Font Propo"
     }

@@ -3,47 +3,67 @@ import QtQuick.Layouts
 import Quickshell
 import Quickshell.Io
 import Quickshell.Hyprland
+import Quickshell.Wayland
 
 ShellRoot {
+    IpcHandler {
+        target: "qsIpc"
+
+        function toggleWallpaperSwitcher() {
+            panel.switcherOpen = !panel.switcherOpen
+        }
+        function openWallpaperSwitcher() {
+            panel.switcherOpen = true
+        }
+        function closeWallpaperSwitcher() {
+            panel.switcherOpen = false
+        }
+    }
+
+    // Main Panel Window containing Top Bar & Overlay Wallpaper Switcher
     PanelWindow {
         id: panel
         anchors {
             top: true
-            // If you want a full-width top bar, these should usually be true.
-            // If you want a floating pill-shaped bar, keep them false.
             left: false
             right: false
         }
 
-        // --- Sizing ---
-        readonly property int barHeight: 37
-        readonly property int switcherHeight: 220
-        property bool switcherOpen: false
+        WlrLayershell.layer: WlrLayer.Overlay
+        exclusionMode: ExclusionMode.Normal
+        exclusiveZone: barHeight
 
-        implicitWidth: 1000
+        readonly property int barHeight: 40
+        readonly property int switcherHeight: 450
+        property bool switcherOpen: false
+        readonly property real openProgress: Math.max(0, Math.min(1, (implicitHeight - barHeight) / switcherHeight))
+
+        implicitWidth: 1040
         implicitHeight: barHeight + (switcherOpen ? switcherHeight : 0)
 
-        // Easing animation for the downward expand/collapse
         Behavior on implicitHeight {
-            NumberAnimation { duration: 320; easing.type: Easing.InOutCubic }
+            NumberAnimation { duration: 350; easing.type: Easing.OutCubic }
         }
 
         color: "transparent"
 
-        Item {
+        Rectangle {
             anchors.fill: parent
+            color: Color.md3.surface_container_high
+            radius: 16
+            border.color: Color.md3.outline_variant
+            border.width: 1
+            clip: true
 
             // --- TOP BAR ---
             Rectangle {
                 id: bar
-                width: parent.width
+                anchors.top: parent.top
+                anchors.left: parent.left
+                anchors.right: parent.right
                 height: panel.barHeight
-                bottomLeftRadius: panel.switcherOpen ? 0 : 15
-                bottomRightRadius: panel.switcherOpen ? 0 : 15
-                color: "brown"
-
-                Behavior on bottomLeftRadius { NumberAnimation { duration: 200 } }
-                Behavior on bottomRightRadius { NumberAnimation { duration: 200 } }
+                color: "transparent"
+                z: 2
 
                 // --- LEFT SECTION ---
                 Row {
@@ -63,19 +83,77 @@ ShellRoot {
                 }
 
                 // --- RIGHT SECTION ---
-                Row {
+                RowLayout {
                     anchors {
                         right: parent.right
                         verticalCenter: parent.verticalCenter
                         rightMargin: 14
                     }
-                    spacing: 30
+                    spacing: 20
 
-                    Wifi {}
-                    Volume {}
-                    Battery {}
+                    // Wallpaper Switcher Button
+                    Rectangle {
+                        Layout.alignment: Qt.AlignVCenter
+                        width: 28
+                        height: 28
+                        radius: 8
+                        color: panel.switcherOpen ? Color.md3.primary_container : (wpMouse.containsMouse ? Color.md3.surface_container_highest : "transparent")
+
+                        Behavior on color { ColorAnimation { duration: 150 } }
+
+                        Text {
+                            anchors.centerIn: parent
+                            text: "󰸉"
+                            font.family: "Jetbrains Mono Nerd Font Propo"
+                            font.pixelSize: 15
+                            color: panel.switcherOpen ? Color.md3.on_primary_container : (wpMouse.containsMouse ? Color.md3.primary : Color.md3.on_surface)
+                        }
+
+                        MouseArea {
+                            id: wpMouse
+                            anchors.fill: parent
+                            hoverEnabled: true
+                            cursorShape: Qt.PointingHandCursor
+                            onClicked: panel.switcherOpen = !panel.switcherOpen
+                        }
+                    }
+
+                    Wifi { Layout.alignment: Qt.AlignVCenter }
+                    Volume { Layout.alignment: Qt.AlignVCenter }
+                    Battery { Layout.alignment: Qt.AlignVCenter }
+                }
+            }
+
+            // --- WALLPAPER SWITCHER SECTION ---
+            Item {
+                id: switcherSection
+                anchors.top: bar.bottom
+                anchors.left: parent.left
+                anchors.right: parent.right
+                height: panel.switcherHeight
+                visible: panel.implicitHeight > panel.barHeight
+                opacity: panel.openProgress
+
+                transform: Translate {
+                    y: -14 * (1 - panel.openProgress)
+                }
+
+                Rectangle {
+                    anchors.top: parent.top
+                    anchors.left: parent.left
+                    anchors.right: parent.right
+                    height: 1
+                    color: Color.md3.outline_variant
+                }
+
+                WallpaperSwitcher {
+                    anchors.fill: parent
+                    onWallpaperSelected: panel.switcherOpen = false
                 }
             }
         }
     }
+
+    // --- OSD WINDOW ---
+    OSD {}
 }

@@ -7,14 +7,14 @@ Row {
 
     SystemClock {
         id: systemClock
-        precision: SystemClock.minutes
+        precision: SystemClock.Minutes
     }
 
-    // Time Text
     Text {
         text: Qt.formatDateTime(systemClock.date, "hh:mm")
-        color: 'white'
+        color: Color.md3.on_surface
         font.pixelSize: 14
+        font.bold: true
         font.family: "Jetbrains Mono Nerd Font Propo"
     }
 }

@@ -14,18 +14,16 @@ RowLayout {
     readonly property int vol: ready ? Math.round(sink.audio.volume * 100) : 0
 
     readonly property string icon: {
-        if (!ready) return String.fromCodePoint(0xF0581)
-        if (muted) return ""
-        if (vol === 0) return ''
-        if (vol < 50) return ''
-        if (vol < 100) return ''
-
-        return ''
+        if (!ready) return "󰝟"
+        if (muted) return "󰝟"
+        if (vol === 0) return '󰕿'
+        if (vol < 50) return '󰖀'
+        return '󰕾'
     }
 
     Text {
         text: volumeRoot.icon
-        color: 'white'
+        color: volumeRoot.muted ? Color.md3.error : Color.md3.primary
         font.pixelSize: 14
         font.family: 'Jetbrains Mono Nerd Font Propo'
     }
@@ -36,12 +34,12 @@ RowLayout {
             if (volumeRoot.muted) return 'Muted'
             return volumeRoot.vol + '%'
         }
-        color: volumeRoot.muted ? "red" : "white"
+        color: volumeRoot.muted ? Color.md3.error : Color.md3.on_surface
         font.pixelSize: 14
         font.family: 'Jetbrains Mono Nerd Font Propo'
     }
 
     PwObjectTracker {
-        objects: {volumeRoot.sink}
+        objects: volumeRoot.sink ? [volumeRoot.sink] : []
     }
 }
