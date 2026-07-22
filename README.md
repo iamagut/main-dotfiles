@@ -7,7 +7,7 @@ Some of the stuff are vibe coded and manually tweaked, and some are just straigh
 Enable vivaldi CSS thing and link it to the file in `~/.local/share/vivaldiCSS`
 
 ### Firefox
-Put the `chrome/` folder into the current profile used in firefox. Go to `about:support` and then click on the <kbd>Open Directory</kbd>, toss the folder there.
+Go to `about:support` and search for `toolkit.legacyUserProfileCustomizations.stylesheets` and turn it to true. Then put the `chrome/` folder into the current profile used in firefox. Go to `about:support` and then click on the <kbd>Open Directory</kbd>, toss the folder there.
 
 ### Wallpapers
 Get wallpapers from these cool repo to have something to work the matugen :)
