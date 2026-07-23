@@ -3,9 +3,9 @@
     "logo": {
         "type": "small",
         "padding": {
-            "top": 7,
-            "left": 1,
-            "right": 3
+            "top": 6,
+            "left": 5,
+            "right": 7
         }
     },
     "display": {
@@ -18,28 +18,28 @@
         },
         {
             "key": "│ {#31}󰌢 SYSTEM     {#keys}│",
-            "type": "host"
+            "type": "title"
         },
         {
-            "key": "│ {#32}├ CPU       {#keys}│",
+            "key": "│ {#32}├󰍛 cpu       {#keys}│",
             "type": "cpu"
         },
         {
-            "key": "│ {#33}├󰍛 GPU       {#keys}│",
+            "key": "│ {#33}├󰾲 gpu       {#keys}│",
             "type": "gpu",
             "format": "{2}",
             "detectionMethod": "vulkan"
         },
         {
-            "key": "│ {#37}├󰍹 Display   {#keys}│",
+            "key": "│ {#37}├󰍹 display   {#keys}│",
             "type": "display"
         },
         {
-            "key": "│ {#34}├ Memory    {#keys}│",
+            "key": "│ {#34}├ memory    {#keys}│",
             "type": "memory"
         },
         {
-            "key": "│ {#35}╰ Disk      {#keys}│",
+            "key": "│ {#35}╰ disk      {#keys}│",
             "type": "disk",
             "folders": "/"
         },
@@ -64,39 +64,31 @@
             "type": "packages"
         },
         {
-            "key": "│ {#34}╰{icon} shell     {#keys}│",
-            "type": "shell"
-        },
-        {
-            "key": "├──────────────┤",
-            "type": "custom"
-        },
-        {
-            "key": "│ {#31}󱗃 WM         {#keys}│",
+            "key": "│ {#31}├󱗃 wm        {#keys}│",
             "type": "wm"
         },
         {
-            "key": "│ {#32}├ Theme     {#keys}│",
-            "type": "theme"
-        },
-        {
-            "key": "│ {#36}├ Terminal  {#keys}│",
+            "key": "│ {#36}├ terminal  {#keys}│",
             "type": "terminal"
         },
         {
-            "key": "│ {#31}╰ Font      {#keys}│",
-            "type": "font"
+            "key": "│ {#34}├{icon} shell     {#keys}│",
+            "type": "shell"
+        },
+        {
+            "key": "│ {#32}╰ theme     {#keys}│",
+            "type": "theme"
         },
         {
             "key": "├──────────────┤",
             "type": "custom"
         },
         {
-            "key": "│ {#34}╭ Uptime    {#keys}│",
+            "key": "│ {#34}  uptime    {#keys}│",
             "type": "uptime"
         },
         {
-            "key": "│ {#39}╰ Colors    {#keys}│",
+            "key": "│ {#39}  colors    {#keys}│",
             "type": "colors",
             "symbol": "circle"
         },
