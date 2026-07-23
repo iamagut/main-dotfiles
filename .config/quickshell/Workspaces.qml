@@ -13,7 +13,7 @@ Row {
     property color activeColor: Color.md3.primary
     property color occupiedColor: Color.md3.on_surface
     property color emptyColor: Color.md3.outline
-    property color pillColor: Color.md3.primary_container
+    property color pillColor: Color.md3.surface_container_highest
 
     property var visibleWorkspaces: {
         var _a = Hyprland.workspaces.values.length
@@ -74,7 +74,7 @@ Row {
 
             MouseArea {
                 anchors.fill: parent
-                cursorShape: Qt.PointingHandCursor
+                cursorShape: Qt.PointingHayndCursor
                 onClicked: Hyprland.dispatch('hl.dsp.focus({ workspace = "' + pill.modelData + '" })')
             }
         }

@@ -11,6 +11,16 @@ PanelWindow {
     WlrLayershell.layer: WlrLayer.Overlay
     exclusionMode: ExclusionMode.Ignore
 
+    // Display-only: never capture pointer events (even while visible/fading).
+    // Without a mask, the PanelWindow blocks apps in its 260×64 region.
+    mask: Region {
+        shape: RegionShape.Rect
+        x: 0
+        y: 0
+        width: 0
+        height: 0
+    }
+
     // Floating bottom-center OSD
     anchors {
         bottom: true
@@ -19,7 +29,7 @@ PanelWindow {
         right: false
     }
     margins {
-        bottom: 50
+        bottom: 150
     }
 
     implicitWidth: 260
@@ -74,7 +84,7 @@ PanelWindow {
 
     Timer {
         id: capsPoller
-        interval: 250
+        interval: 200
         running: true
         repeat: true
         onTriggered: capsProcess.running = true
