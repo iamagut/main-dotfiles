@@ -1,0 +1,96 @@
+{
+    "$schema": "https://github.com/fastfetch-cli/fastfetch/raw/dev/doc/json_schema.json",
+    "logo": {
+        "type": "small",
+        "padding": {
+            "top": 4,
+            "left": 5,
+            "right": 7
+        }
+    },
+    "display": {
+        "separator": " "
+    },
+    "modules": [
+        {
+            "key": "{#31}󰇅",
+            "type": "title"
+        },
+        {
+            "key": "{#32}│ {icon} ",
+            "type": "cpu"
+        },
+        {
+            "key": "{#33}│ {icon} ",
+            "type": "gpu",
+            "format": "{2}",
+            "detectionMethod": "vulkan"
+        },
+        {
+            "key": "{#32}│ {icon} ",
+            "type": "display"
+        },
+        {
+            "key": "{#34}│ {icon} ",
+            "type": "memory"
+        },
+        {
+            "key": "{#35}│ {icon} ",
+            "type": "disk",
+            "folders": "/"
+        },
+        {
+            "key": "{#35}╰─── ",
+            "type": "custom"
+        },
+        "break",
+        {
+            "key": "{#31}{icon}",
+            "type": "os"
+        },
+        {
+            "key": "{#32}│ {icon} ",
+            "type": "kernel"
+        },
+        {
+            "key": "{#33}│ {icon} ",
+            "type": "wm"
+        },
+        {
+            "key": "{#33}│ {icon} ",
+            "type": "packages"
+        },
+        {
+            "key": "{#34}│  ",
+            "type": "terminal"
+        },
+        {
+            "key": "{#35}│ {icon} ",
+            "type": "shell"
+        },
+        {
+            "key": "{#36}│  ",
+            "type": "uptime"
+        },
+        {
+            "key": "{#39}│ {icon} ",
+            "type": "colors",
+            "symbol": "󰚍",
+            "block": {
+              "range": [0, 7]
+            }
+        },
+        {
+            "key": "{#39}│   ",
+            "type": "colors",
+            "symbol": "󰚍",
+            "block": {
+              "range": [8, 15]
+            }
+        },
+        {
+            "key": "{#39}╰─── ",
+            "type": "custom"
+        },
+    ]
+}
