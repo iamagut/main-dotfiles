@@ -78,9 +78,8 @@ matugen needs a wallpaper to color from, so here's the usual suspects:
 
 - `.local/bin/wallpaper-picker.sh` — my small script for picking a wallpaper.
 
-## Huge shout-out
+## Epic Stuff
 
 - **[HyDE](https://github.com/HyDE-Projects/HyDE)** — honestly the best Hyprland experience I've had while learning; the base of everything here.
 - **[ml4w](https://github.com/mlademi2/ml4w)** — foundational reference.
 - **[matugen](https://github.com/Baroban/matugen)** — for the dynamic coloring.
-- **[Catppuccin](https://github.com/catppuccin/catppuccin)** — for the base Mocha palette.
