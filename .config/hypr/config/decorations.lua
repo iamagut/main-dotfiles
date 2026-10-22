@@ -8,10 +8,10 @@ local colors = require("config/colors")
 -- ── General & Decoration ────────────────────────────────────────
 hl.config({
 	general = {
-		gaps_in = 4,
-		gaps_out = 7,
+		gaps_in = 3,
+		gaps_out = 6,
 
-		border_size = 2,
+		border_size = 0,
 
 		col = {
 			active_border = colors.accent,
@@ -42,22 +42,22 @@ hl.config({
 	},
 
 	decoration = {
-		rounding = 10,
-		rounding_power = 4,
+		rounding = 9,
+		rounding_power = 2,
 
 		active_opacity = 1.0,
-		inactive_opacity = 0.8,
+		inactive_opacity = 1.0,
 
 		shadow = {
-			enabled = false,
-			range = 7,
-			render_power = 2,
+			enabled = true,
+			range = 12,
+			render_power = 10,
 			color = colors.background,
 		},
 
 		blur = {
 			enabled = true,
-			size = 7,
+			size = 12,
 			passes = 2,
 			vibrancy = 0.1696,
 		},
