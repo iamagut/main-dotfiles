@@ -3,21 +3,26 @@ import QtQuick.Layouts
 import Quickshell
 import Quickshell.Hyprland
 
-Row {
+Item {
     id: workspacesRoot
-    spacing: 8
 
     property int capAt: 5
     property int totalWorkspaces: 10
 
-    property color activeColor: Color.md3.primary
-    property color occupiedColor: Color.md3.on_surface
-    property color emptyColor: Color.md3.outline
-    property color pillColor: Color.md3.surface_container_highest
+    property color activeColor: Colors.md3.primary
+    property color occupiedColor: Colors.md3.on_surface
+    property color emptyColor: Colors.md3.outline
 
-    property int dotSize: 8
-    property int pillWidth: 30
-    property real hoverScale: 2.5
+    property int itemSize: 20
+    property int fontSize: 14
+    property real hoverScale: 1
+
+    property int underlineHeight: 2
+    property int underlineBottomMargin: -5
+    property int underlineAnimDuration: 150
+
+    implicitWidth: pillsRow.implicitWidth
+    implicitHeight: pillsRow.implicitHeight
 
     property var visibleWorkspaces: {
         var _a = Hyprland.workspaces.values.length
@@ -41,60 +46,99 @@ Row {
         return list
     }
 
+    onVisibleWorkspacesChanged: Qt.callLater(updateUnderline)
+
     Connections {
         target: Hyprland.workspaces
         function onObjectInsertedPost() { Hyprland.refreshWorkspaces() }
         function onObjectRemovedPost() { Hyprland.refreshWorkspaces() }
     }
 
-    Repeater {
-        model: workspacesRoot.visibleWorkspaces
+    Connections {
+        target: Hyprland
+        function onFocusedWorkspaceChanged() { Qt.callLater(updateUnderline) }
+    }
 
-        delegate: Rectangle {
-            id: pill
-            required property int modelData
+    function updateUnderline() {
+        var focusedId = Hyprland.focusedWorkspace ? Hyprland.focusedWorkspace.id : -1
+        var idx = visibleWorkspaces.indexOf(focusedId)
+        if (idx < 0) return
 
-            property var ws: Hyprland.workspaces.values.find(function (w) { return w.id === modelData })
-            property bool isFocused: Boolean(Hyprland.focusedWorkspace && Hyprland.focusedWorkspace.id === modelData)
-            property bool hasWindows: Boolean(ws && ws.toplevels && ws.toplevels.values.length > 0)
-            property bool hovered: mouseArea.containsMouse
+        var item = repeater.itemAt(idx)
+        if (!item) return
 
-            width: isFocused ? workspacesRoot.pillWidth : workspacesRoot.dotSize
-            height: workspacesRoot.dotSize
-            radius: height / 2
-            scale: hovered ? workspacesRoot.hoverScale : 1.0
-            z: hovered ? 10 : 0
+        var pos = item.mapToItem(workspacesRoot, 0, 0)
+        underline.targetX = pos.x
+        underline.targetWidth = item.width
+    }
 
-            color: isFocused ? workspacesRoot.activeColor
-                   : hasWindows ? workspacesRoot.occupiedColor
-                   : workspacesRoot.emptyColor
+    Row {
+        id: pillsRow
+        spacing: 10
 
-            Behavior on width { NumberAnimation { duration: 120; easing.type: Easing.OutCubic } }
-            Behavior on scale { NumberAnimation { duration: 120; easing.type: Easing.OutBack } }
-            Behavior on color { ColorAnimation { duration: 120 } }
+        Repeater {
+            id: repeater
+            model: workspacesRoot.visibleWorkspaces
 
-            Text {
-                anchors.centerIn: parent
-                text: modelData
-                font.family: "Jetbrains Mono Nerd Font Propo"
-                font.pixelSize: 6
-                font.bold: true
-                color: pill.isFocused ? Color.md3.on_primary_container
-                       : pill.hasWindows ? Color.md3.surface
-                       : Color.md3.surface
-                opacity: pill.hovered ? 1 : 0
+            delegate: Item {
+                id: pill
+                required property int modelData
 
-                Behavior on opacity { NumberAnimation { duration: 100 } }
-            }
+                property var ws: Hyprland.workspaces.values.find(function (w) { return w.id === modelData })
+                property bool isFocused: Boolean(Hyprland.focusedWorkspace && Hyprland.focusedWorkspace.id === modelData)
+                property bool hasWindows: Boolean(ws && ws.toplevels && ws.toplevels.values.length > 0)
+                property bool hovered: mouseArea.containsMouse
 
-            MouseArea {
-                id: mouseArea
-                anchors.fill: parent
-                anchors.margins: -4
-                hoverEnabled: true
-                cursorShape: Qt.PointingHandCursor
-                onClicked: Hyprland.dispatch('hl.dsp.focus({ workspace = "' + pill.modelData + '" })')
+                width: Math.max(workspacesRoot.itemSize, numberText.paintedWidth + 6)
+                height: workspacesRoot.itemSize
+
+                scale: hovered ? workspacesRoot.hoverScale : 1.0
+                Behavior on scale { NumberAnimation { duration: 120; easing.type: Easing.OutBack } }
+
+                onIsFocusedChanged: if (isFocused) Qt.callLater(workspacesRoot.updateUnderline)
+                onWidthChanged: if (isFocused) Qt.callLater(workspacesRoot.updateUnderline)
+                Component.onCompleted: if (isFocused) Qt.callLater(workspacesRoot.updateUnderline)
+
+                Text {
+                    id: numberText
+                    anchors.centerIn: parent
+                    text: pill.modelData
+                    font.family: "Jetbrains Mono Nerd Font Propo"
+                    font.pixelSize: workspacesRoot.fontSize
+                    font.bold: pill.isFocused
+                    color: pill.isFocused ? workspacesRoot.activeColor
+                           : pill.hasWindows ? workspacesRoot.occupiedColor
+                           : workspacesRoot.emptyColor
+
+                    Behavior on color { ColorAnimation { duration: 120 } }
+                }
+
+                MouseArea {
+                    id: mouseArea
+                    anchors.fill: parent
+                    anchors.margins: -4
+                    hoverEnabled: true
+                    cursorShape: Qt.PointingHandCursor
+                    onClicked: Hyprland.dispatch('hl.dsp.focus({ workspace = "' + pill.modelData + '" })')
+                }
             }
         }
+    }
+
+    Rectangle {
+        id: underline
+        property real targetX: 0
+        property real targetWidth: 0
+
+        y: pillsRow.height - height - workspacesRoot.underlineBottomMargin
+        height: workspacesRoot.underlineHeight
+        radius: height / 2
+        color: workspacesRoot.activeColor
+
+        x: targetX
+        width: targetWidth
+
+        Behavior on x { NumberAnimation { duration: workspacesRoot.underlineAnimDuration; easing.type: Easing.OutCubic } }
+        Behavior on width { NumberAnimation { duration: workspacesRoot.underlineAnimDuration; easing.type: Easing.OutCubic } }
     }
 }

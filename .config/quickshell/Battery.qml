@@ -23,10 +23,10 @@ RowLayout {
 
     Text {
         text: batteryRoot.icon
-        color: batteryRoot.charging ? Color.md3.primary
-                             : batteryRoot.level <= 15 ? Color.md3.error
-                             : batteryRoot.level <= 30 ? Color.md3.tertiary
-                             : Color.md3.on_surface
+        color: batteryRoot.charging ? Colors.md3.primary
+                             : batteryRoot.level <= 15 ? Colors.md3.error
+                             : batteryRoot.level <= 30 ? Colors.md3.tertiary
+                             : Colors.md3.on_surface
 
         font.pixelSize: 14
         font.family: "Jetbrains Mono Nerd Font Propo"
@@ -34,7 +34,7 @@ RowLayout {
 
     Text {
         text: batteryRoot.level + '%'
-        color: Color.md3.on_surface
+        color: Colors.md3.on_surface
         font.pixelSize: 14
         font.family: "Jetbrains Mono Nerd Font Propo"
     }

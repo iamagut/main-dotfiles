@@ -10,18 +10,48 @@ Item {
     id: switcherRoot
     property bool active: false
     property int selectedIndex: 0
+    property string currentWallpaperPath: ""
     signal wallpaperSelected(string path)
 
     ListModel {
         id: wallpaperModel
     }
 
+    function indexOfWallpaper(path) {
+        if (!path || path.length === 0)
+            return -1
+        for (var i = 0; i < wallpaperModel.count; i++) {
+            if (wallpaperModel.get(i).fullPath === path)
+                return i
+        }
+        return -1
+    }
+
+    function jumpToIndex(idx, animate) {
+        if (idx < 0 || idx >= wallpaperModel.count)
+            idx = 0
+        selectedIndex = idx
+        if (wallpaperPathView.count <= 0)
+            return
+        if (animate) {
+            wallpaperPathView.currentIndex = idx
+            return
+        }
+        var dur = wallpaperPathView.highlightMoveDuration
+        wallpaperPathView.highlightMoveDuration = 0
+        wallpaperPathView.currentIndex = idx
+        wallpaperPathView.highlightMoveDuration = dur
+    }
+
+    function selectCurrentWallpaper() {
+        jumpToIndex(indexOfWallpaper(currentWallpaperPath), false)
+    }
+
     onActiveChanged: {
         if (active) {
-            selectedIndex = 0
-            if (wallpaperPathView.count > 0) {
-                wallpaperPathView.currentIndex = 0
-            }
+            // Prefer last known path immediately, then refresh from awww.
+            selectCurrentWallpaper()
+            currentQuery.running = true
             wallpaperPathView.forceActiveFocus()
         }
     }
@@ -50,6 +80,23 @@ Item {
         }
     }
 
+    Process {
+        id: currentQuery
+        command: ["awww", "query"]
+        stdout: StdioCollector {
+            id: currentQueryCollector
+        }
+        onExited: function(exitCode, exitStatus) {
+            if (exitCode === 0) {
+                var match = currentQueryCollector.text.match(/image:\s*(.+)/)
+                if (match)
+                    switcherRoot.currentWallpaperPath = match[1].trim()
+            }
+            if (switcherRoot.active)
+                switcherRoot.selectCurrentWallpaper()
+        }
+    }
+
     ColumnLayout {
         anchors.fill: parent
         anchors.margins: 14
@@ -65,14 +112,14 @@ Item {
                 font.family: "Jetbrains Mono Nerd Font Propo"
                 font.pixelSize: 15
                 font.bold: true
-                color: Color.md3.primary
+                color: Colors.md3.primary
             }
 
             Text {
                 text: "(" + wallpaperModel.count + " available)"
                 font.family: "Jetbrains Mono Nerd Font Propo"
                 font.pixelSize: 12
-                color: Color.md3.on_surface_variant
+                color: Colors.md3.on_surface_variant
             }
 
             Item { Layout.fillWidth: true }
@@ -83,20 +130,20 @@ Item {
 
                 RowLayout {
                     spacing: 4
-                    Text { text: "← →"; font.family: "Jetbrains Mono Nerd Font Propo"; font.pixelSize: 11; font.bold: true; color: Color.md3.primary }
-                    Text { text: "Navigate"; font.family: "Jetbrains Mono Nerd Font Propo"; font.pixelSize: 11; color: Color.md3.on_surface_variant }
+                    Text { text: "← →"; font.family: "Jetbrains Mono Nerd Font Propo"; font.pixelSize: 11; font.bold: true; color: Colors.md3.primary }
+                    Text { text: "Navigate"; font.family: "Jetbrains Mono Nerd Font Propo"; font.pixelSize: 11; color: Colors.md3.on_surface_variant }
                 }
 
                 RowLayout {
                     spacing: 4
-                    Text { text: "↵"; font.family: "Jetbrains Mono Nerd Font Propo"; font.pixelSize: 11; font.bold: true; color: Color.md3.primary }
-                    Text { text: "Apply"; font.family: "Jetbrains Mono Nerd Font Propo"; font.pixelSize: 11; color: Color.md3.on_surface_variant }
+                    Text { text: "↵"; font.family: "Jetbrains Mono Nerd Font Propo"; font.pixelSize: 11; font.bold: true; color: Colors.md3.primary }
+                    Text { text: "Apply"; font.family: "Jetbrains Mono Nerd Font Propo"; font.pixelSize: 11; color: Colors.md3.on_surface_variant }
                 }
 
                 RowLayout {
                     spacing: 4
-                    Text { text: "Esc"; font.family: "Jetbrains Mono Nerd Font Propo"; font.pixelSize: 11; font.bold: true; color: Color.md3.primary }
-                    Text { text: "Close"; font.family: "Jetbrains Mono Nerd Font Propo"; font.pixelSize: 11; color: Color.md3.on_surface_variant }
+                    Text { text: "Esc"; font.family: "Jetbrains Mono Nerd Font Propo"; font.pixelSize: 11; font.bold: true; color: Colors.md3.primary }
+                    Text { text: "Close"; font.family: "Jetbrains Mono Nerd Font Propo"; font.pixelSize: 11; color: Colors.md3.on_surface_variant }
                 }
             }
         }
@@ -180,6 +227,7 @@ Item {
                     if (wallpaperModel.count > 0 && switcherRoot.selectedIndex >= 0 && switcherRoot.selectedIndex < wallpaperModel.count) {
                         var item = wallpaperModel.get(switcherRoot.selectedIndex)
                         if (item && item.fullPath) {
+                            switcherRoot.currentWallpaperPath = item.fullPath
                             applyProcess.command = ["/home/iamagut/.local/bin/wallpaper-picker.sh", item.fullPath]
                             applyProcess.running = true
                             switcherRoot.wallpaperSelected(item.fullPath)
@@ -236,7 +284,7 @@ Item {
                                     id: imageContainer
                                     anchors.fill: parent
                                     radius: 10
-                                    color: Color.md3.surface_dim
+                                    color: Colors.md3.surface_dim
 
                                     Image {
                                         anchors.fill: parent
@@ -256,7 +304,7 @@ Item {
                                     height: 18
                                     width: categoryText.implicitWidth + 10
                                     radius: 9
-                                    color: isSelected ? Color.md3.primary : Color.md3.primary_container
+                                    color: isSelected ? Colors.md3.primary : Colors.md3.primary_container
                                     opacity: 0.95
 
                                     Behavior on color { ColorAnimation { duration: 150 } }
@@ -268,7 +316,7 @@ Item {
                                         font.family: "Jetbrains Mono Nerd Font Propo"
                                         font.pixelSize: 9
                                         font.bold: true
-                                        color: isSelected ? Color.md3.on_primary : Color.md3.on_primary_container
+                                        color: isSelected ? Colors.md3.on_primary : Colors.md3.on_primary_container
                                     }
                                 }
                             }
@@ -281,7 +329,7 @@ Item {
                                 font.family: "Jetbrains Mono Nerd Font Propo"
                                 font.pixelSize: 11
                                 font.bold: isSelected
-                                color: isSelected ? Color.md3.primary : Color.md3.on_surface
+                                color: isSelected ? Colors.md3.primary : Colors.md3.on_surface
                                 elide: Text.ElideMiddle
                                 horizontalAlignment: Text.AlignHCenter
                                 verticalAlignment: Text.AlignVCenter
@@ -299,6 +347,7 @@ Item {
                             cursorShape: Qt.PointingHandCursor
                             onClicked: {
                                 if (switcherRoot.selectedIndex === index) {
+                                    switcherRoot.currentWallpaperPath = model.fullPath
                                     applyProcess.command = ["/home/iamagut/.local/bin/wallpaper-picker.sh", model.fullPath]
                                     applyProcess.running = true
                                     switcherRoot.wallpaperSelected(model.fullPath)

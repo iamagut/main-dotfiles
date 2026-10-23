@@ -58,7 +58,7 @@ Item {
                 font.family: "Jetbrains Mono Nerd Font Propo"
                 font.pixelSize: 15
                 font.bold: true
-                color: Color.md3.primary
+                color: Colors.md3.primary
             }
 
             Item { Layout.fillWidth: true }
@@ -69,20 +69,20 @@ Item {
 
                 RowLayout {
                     spacing: 4
-                    Text { text: "← →"; font.family: "Jetbrains Mono Nerd Font Propo"; font.pixelSize: 11; font.bold: true; color: Color.md3.primary }
-                    Text { text: "Navigate"; font.family: "Jetbrains Mono Nerd Font Propo"; font.pixelSize: 11; color: Color.md3.on_surface_variant }
+                    Text { text: "← →"; font.family: "Jetbrains Mono Nerd Font Propo"; font.pixelSize: 11; font.bold: true; color: Colors.md3.primary }
+                    Text { text: "Navigate"; font.family: "Jetbrains Mono Nerd Font Propo"; font.pixelSize: 11; color: Colors.md3.on_surface_variant }
                 }
 
                 RowLayout {
                     spacing: 4
-                    Text { text: "↵"; font.family: "Jetbrains Mono Nerd Font Propo"; font.pixelSize: 11; font.bold: true; color: Color.md3.primary }
-                    Text { text: "Execute"; font.family: "Jetbrains Mono Nerd Font Propo"; font.pixelSize: 11; color: Color.md3.on_surface_variant }
+                    Text { text: "↵"; font.family: "Jetbrains Mono Nerd Font Propo"; font.pixelSize: 11; font.bold: true; color: Colors.md3.primary }
+                    Text { text: "Execute"; font.family: "Jetbrains Mono Nerd Font Propo"; font.pixelSize: 11; color: Colors.md3.on_surface_variant }
                 }
 
                 RowLayout {
                     spacing: 4
-                    Text { text: "Esc"; font.family: "Jetbrains Mono Nerd Font Propo"; font.pixelSize: 11; font.bold: true; color: Color.md3.primary }
-                    Text { text: "Close"; font.family: "Jetbrains Mono Nerd Font Propo"; font.pixelSize: 11; color: Color.md3.on_surface_variant }
+                    Text { text: "Esc"; font.family: "Jetbrains Mono Nerd Font Propo"; font.pixelSize: 11; font.bold: true; color: Colors.md3.primary }
+                    Text { text: "Close"; font.family: "Jetbrains Mono Nerd Font Propo"; font.pixelSize: 11; color: Colors.md3.on_surface_variant }
                 }
             }
         }
@@ -130,8 +130,8 @@ Item {
                     readonly property bool isSelected: index === selectedIndex
                     readonly property bool isHovered: mouseArea.containsMouse
                     
-                    color: isSelected ? Color.md3.primary : (isHovered ? Color.md3.surface_container_highest : Color.md3.surface_container_low)
-                    border.color: isSelected ? Color.md3.primary : Color.md3.outline_variant
+                    color: isSelected ? Colors.md3.primary : (isHovered ? Colors.md3.surface_container_highest : Colors.md3.surface_container_low)
+                    border.color: isSelected ? Colors.md3.primary : Colors.md3.outline_variant
                     border.width: 1
 
                     scale: isSelected ? 1.05 : 1.0
@@ -154,7 +154,7 @@ Item {
                             text: model.icon
                             font.family: "Jetbrains Mono Nerd Font Propo"
                             font.pixelSize: 24
-                            color: isSelected ? Color.md3.on_primary : Color.md3.primary
+                            color: isSelected ? Colors.md3.on_primary : Colors.md3.primary
                         }
 
                         Text {
@@ -163,7 +163,7 @@ Item {
                             font.family: "Jetbrains Mono Nerd Font Propo"
                             font.pixelSize: 11
                             font.bold: isSelected
-                            color: isSelected ? Color.md3.on_primary : Color.md3.on_surface
+                            color: isSelected ? Colors.md3.on_primary : Colors.md3.on_surface
                         }
 
                         Text {
@@ -172,7 +172,7 @@ Item {
                             font.family: "Jetbrains Mono Nerd Font Propo"
                             font.pixelSize: 9
                             font.bold: true
-                            color: isSelected ? Color.md3.on_primary : Color.md3.on_surface_variant
+                            color: isSelected ? Colors.md3.on_primary : Colors.md3.on_surface_variant
                             opacity: isSelected ? 0.9 : 0.6
                         }
 

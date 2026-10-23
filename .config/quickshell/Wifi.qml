@@ -28,7 +28,7 @@ Row {
         text: wifiRoot.icon
         font.pixelSize: 14
         font.family: 'Jetbrains Mono Nerd Font Propo'
-        color: Networking.wifiEnabled ? (wifiRoot.active ? Color.md3.primary : Color.md3.outline) : Color.md3.error
+        color: Networking.wifiEnabled ? (wifiRoot.active ? Colors.md3.primary : Colors.md3.outline) : Colors.md3.error
     }
 
     Text {
@@ -38,7 +38,7 @@ Row {
             return wifiRoot.active.name
         }
 
-        color: wifiRoot.active ? Color.md3.on_surface : Color.md3.on_surface_variant
+        color: wifiRoot.active ? Colors.md3.on_surface : Colors.md3.on_surface_variant
         font.pixelSize: 14
         font.family: 'Jetbrains Mono Nerd Font Propo'
     }

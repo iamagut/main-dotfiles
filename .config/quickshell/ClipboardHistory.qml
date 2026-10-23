@@ -219,14 +219,14 @@ Item {
                 font.family: "Jetbrains Mono Nerd Font Propo"
                 font.pixelSize: 15
                 font.bold: true
-                color: Color.md3.primary
+                color: Colors.md3.primary
             }
 
             Text {
                 text: loading ? "(loading…)" : ("(" + clipboardRoot.filteredEntries.length + " items)")
                 font.family: "Jetbrains Mono Nerd Font Propo"
                 font.pixelSize: 12
-                color: Color.md3.on_surface_variant
+                color: Colors.md3.on_surface_variant
             }
 
             Item { Layout.fillWidth: true }
@@ -237,26 +237,26 @@ Item {
 
                 RowLayout {
                     spacing: 4
-                    Text { text: "↑ ↓"; font.family: "Jetbrains Mono Nerd Font Propo"; font.pixelSize: 11; font.bold: true; color: Color.md3.primary }
-                    Text { text: "Navigate"; font.family: "Jetbrains Mono Nerd Font Propo"; font.pixelSize: 11; color: Color.md3.on_surface_variant }
+                    Text { text: "↑ ↓"; font.family: "Jetbrains Mono Nerd Font Propo"; font.pixelSize: 11; font.bold: true; color: Colors.md3.primary }
+                    Text { text: "Navigate"; font.family: "Jetbrains Mono Nerd Font Propo"; font.pixelSize: 11; color: Colors.md3.on_surface_variant }
                 }
 
                 RowLayout {
                     spacing: 4
-                    Text { text: "↵"; font.family: "Jetbrains Mono Nerd Font Propo"; font.pixelSize: 11; font.bold: true; color: Color.md3.primary }
-                    Text { text: "Copy"; font.family: "Jetbrains Mono Nerd Font Propo"; font.pixelSize: 11; color: Color.md3.on_surface_variant }
+                    Text { text: "↵"; font.family: "Jetbrains Mono Nerd Font Propo"; font.pixelSize: 11; font.bold: true; color: Colors.md3.primary }
+                    Text { text: "Copy"; font.family: "Jetbrains Mono Nerd Font Propo"; font.pixelSize: 11; color: Colors.md3.on_surface_variant }
                 }
 
                 RowLayout {
                     spacing: 4
-                    Text { text: "Del"; font.family: "Jetbrains Mono Nerd Font Propo"; font.pixelSize: 11; font.bold: true; color: Color.md3.primary }
-                    Text { text: "Delete"; font.family: "Jetbrains Mono Nerd Font Propo"; font.pixelSize: 11; color: Color.md3.on_surface_variant }
+                    Text { text: "Del"; font.family: "Jetbrains Mono Nerd Font Propo"; font.pixelSize: 11; font.bold: true; color: Colors.md3.primary }
+                    Text { text: "Delete"; font.family: "Jetbrains Mono Nerd Font Propo"; font.pixelSize: 11; color: Colors.md3.on_surface_variant }
                 }
 
                 RowLayout {
                     spacing: 4
-                    Text { text: "Esc"; font.family: "Jetbrains Mono Nerd Font Propo"; font.pixelSize: 11; font.bold: true; color: Color.md3.primary }
-                    Text { text: "Close"; font.family: "Jetbrains Mono Nerd Font Propo"; font.pixelSize: 11; color: Color.md3.on_surface_variant }
+                    Text { text: "Esc"; font.family: "Jetbrains Mono Nerd Font Propo"; font.pixelSize: 11; font.bold: true; color: Colors.md3.primary }
+                    Text { text: "Close"; font.family: "Jetbrains Mono Nerd Font Propo"; font.pixelSize: 11; color: Colors.md3.on_surface_variant }
                 }
             }
         }
@@ -270,8 +270,8 @@ Item {
                 Layout.fillWidth: true
                 height: 38
                 radius: 10
-                color: searchField.activeFocus ? Color.md3.surface_container_highest : Color.md3.surface_container_low
-                border.color: searchField.activeFocus ? Color.md3.primary : Color.md3.outline_variant
+                color: searchField.activeFocus ? Colors.md3.surface_container_highest : Colors.md3.surface_container_low
+                border.color: searchField.activeFocus ? Colors.md3.primary : Colors.md3.outline_variant
                 border.width: searchField.activeFocus ? 2 : 1
 
                 Behavior on color { ColorAnimation { duration: 150 } }
@@ -286,7 +286,7 @@ Item {
                         text: "󰍉"
                         font.family: "Jetbrains Mono Nerd Font Propo"
                         font.pixelSize: 16
-                        color: searchField.activeFocus ? Color.md3.primary : Color.md3.on_surface_variant
+                        color: searchField.activeFocus ? Colors.md3.primary : Colors.md3.on_surface_variant
                     }
 
                     TextInput {
@@ -294,14 +294,14 @@ Item {
                         Layout.fillWidth: true
                         font.family: "Jetbrains Mono Nerd Font Propo"
                         font.pixelSize: 14
-                        color: Color.md3.on_surface
+                        color: Colors.md3.on_surface
                         clip: true
 
                         Text {
                             text: "Search clipboard history…"
                             font.family: "Jetbrains Mono Nerd Font Propo"
                             font.pixelSize: 13
-                            color: Color.md3.on_surface_variant
+                            color: Colors.md3.on_surface_variant
                             opacity: 0.6
                             visible: searchField.text === "" && !searchField.activeFocus
                             anchors.verticalCenter: parent.verticalCenter
@@ -350,7 +350,7 @@ Item {
                         width: 22
                         height: 22
                         radius: 11
-                        color: clearMouse.containsMouse ? Color.md3.surface_container_highest : "transparent"
+                        color: clearMouse.containsMouse ? Colors.md3.surface_container_highest : "transparent"
                         visible: searchField.text.length > 0
 
                         Text {
@@ -358,7 +358,7 @@ Item {
                             text: "󰅖"
                             font.family: "Jetbrains Mono Nerd Font Propo"
                             font.pixelSize: 13
-                            color: Color.md3.on_surface_variant
+                            color: Colors.md3.on_surface_variant
                         }
 
                         MouseArea {
@@ -379,8 +379,8 @@ Item {
                 width: 38
                 height: 38
                 radius: 10
-                color: wipeMouse.containsMouse ? Color.md3.error_container : Color.md3.surface_container_low
-                border.color: Color.md3.outline_variant
+                color: wipeMouse.containsMouse ? Colors.md3.error_container : Colors.md3.surface_container_low
+                border.color: Colors.md3.outline_variant
                 border.width: 1
 
                 Text {
@@ -388,7 +388,7 @@ Item {
                     text: "󰃢"
                     font.family: "Jetbrains Mono Nerd Font Propo"
                     font.pixelSize: 16
-                    color: wipeMouse.containsMouse ? Color.md3.on_error_container : Color.md3.error
+                    color: wipeMouse.containsMouse ? Colors.md3.on_error_container : Colors.md3.error
                 }
 
                 MouseArea {
@@ -417,8 +417,8 @@ Item {
                     height: 28
                     width: typeText.implicitWidth + 20
                     radius: 14
-                    color: clipboardRoot.selectedType === modelData ? Color.md3.primary : (typeMouse.containsMouse ? Color.md3.surface_container_highest : Color.md3.surface_container_low)
-                    border.color: clipboardRoot.selectedType === modelData ? Color.md3.primary : Color.md3.outline_variant
+                    color: clipboardRoot.selectedType === modelData ? Colors.md3.primary : (typeMouse.containsMouse ? Colors.md3.surface_container_highest : Colors.md3.surface_container_low)
+                    border.color: clipboardRoot.selectedType === modelData ? Colors.md3.primary : Colors.md3.outline_variant
                     border.width: 1
 
                     Behavior on color { ColorAnimation { duration: 150 } }
@@ -430,7 +430,7 @@ Item {
                         font.family: "Jetbrains Mono Nerd Font Propo"
                         font.pixelSize: 11
                         font.bold: clipboardRoot.selectedType === typePill.modelData
-                        color: clipboardRoot.selectedType === typePill.modelData ? Color.md3.on_primary : Color.md3.on_surface
+                        color: clipboardRoot.selectedType === typePill.modelData ? Colors.md3.on_primary : Colors.md3.on_surface
                     }
 
                     MouseArea {
@@ -449,7 +449,7 @@ Item {
         Rectangle {
             Layout.fillWidth: true
             height: 1
-            color: Color.md3.outline_variant
+            color: Colors.md3.outline_variant
             opacity: 0.5
         }
 
@@ -468,7 +468,7 @@ Item {
                     text: "󰅌"
                     font.family: "Jetbrains Mono Nerd Font Propo"
                     font.pixelSize: 36
-                    color: Color.md3.on_surface_variant
+                    color: Colors.md3.on_surface_variant
                 }
 
                 Text {
@@ -477,7 +477,7 @@ Item {
                     font.family: "Jetbrains Mono Nerd Font Propo"
                     font.pixelSize: 14
                     font.bold: true
-                    color: Color.md3.on_surface
+                    color: Colors.md3.on_surface
                 }
 
                 Text {
@@ -485,7 +485,7 @@ Item {
                     text: "Copy text or images to populate history"
                     font.family: "Jetbrains Mono Nerd Font Propo"
                     font.pixelSize: 11
-                    color: Color.md3.on_surface_variant
+                    color: Colors.md3.on_surface_variant
                 }
             }
 
@@ -512,7 +512,7 @@ Item {
                         anchors.leftMargin: 4
                         anchors.rightMargin: 4
                         radius: 12
-                        color: isSelected ? Color.md3.primary_container : (rowMouse.containsMouse ? Color.md3.surface_container_highest : Color.md3.surface_container_low)
+                        color: isSelected ? Colors.md3.primary_container : (rowMouse.containsMouse ? Colors.md3.surface_container_highest : Colors.md3.surface_container_low)
                         border.width: 0
 
                         scale: isSelected ? 1.01 : 1.0
@@ -545,7 +545,7 @@ Item {
                                 width: modelData.isImage ? 72 : 32
                                 height: modelData.isImage ? 72 : 32
                                 radius: 8
-                                color: Color.md3.surface_dim
+                                color: Colors.md3.surface_dim
                                 clip: true
 
                                 Text {
@@ -554,7 +554,7 @@ Item {
                                     text: "󰊄"
                                     font.family: "Jetbrains Mono Nerd Font Propo"
                                     font.pixelSize: 14
-                                    color: isSelected ? Color.md3.primary : Color.md3.on_surface_variant
+                                    color: isSelected ? Colors.md3.primary : Colors.md3.on_surface_variant
                                 }
 
                                 ClippingWrapperRectangle {
@@ -578,7 +578,7 @@ Item {
                                             text: "󰋩"
                                             font.family: "Jetbrains Mono Nerd Font Propo"
                                             font.pixelSize: 20
-                                            color: Color.md3.on_surface_variant
+                                            color: Colors.md3.on_surface_variant
                                         }
                                     }
                                 }
@@ -615,7 +615,7 @@ Item {
                                     font.family: "Jetbrains Mono Nerd Font Propo"
                                     font.pixelSize: 12
                                     font.bold: true
-                                    color: isSelected ? Color.md3.on_primary_container : Color.md3.on_surface
+                                    color: isSelected ? Colors.md3.on_primary_container : Colors.md3.on_surface
                                     elide: Text.ElideRight
                                     maximumLineCount: modelData.isImage ? 1 : 2
                                     wrapMode: Text.Wrap
@@ -631,7 +631,7 @@ Item {
                                         : ("#" + modelData.id)
                                     font.family: "Jetbrains Mono Nerd Font Propo"
                                     font.pixelSize: 10
-                                    color: isSelected ? Color.md3.on_primary_container : Color.md3.on_surface_variant
+                                    color: isSelected ? Colors.md3.on_primary_container : Colors.md3.on_surface_variant
                                     elide: Text.ElideRight
                                     opacity: 0.85
                                 }
@@ -641,7 +641,7 @@ Item {
                                 height: 20
                                 width: kindText.implicitWidth + 12
                                 radius: 10
-                                color: isSelected ? Color.md3.primary : Color.md3.surface_container_high
+                                color: isSelected ? Colors.md3.primary : Colors.md3.surface_container_high
 
                                 Text {
                                     id: kindText
@@ -650,7 +650,7 @@ Item {
                                     font.family: "Jetbrains Mono Nerd Font Propo"
                                     font.pixelSize: 9
                                     font.bold: true
-                                    color: isSelected ? Color.md3.on_primary : Color.md3.on_surface_variant
+                                    color: isSelected ? Colors.md3.on_primary : Colors.md3.on_surface_variant
                                 }
                             }
                         }

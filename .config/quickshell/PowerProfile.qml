@@ -30,9 +30,9 @@ Item {
         anchors.verticalCenter: parent.verticalCenter
         height: 28
         radius: height / 2
-        color: root.expanded ? Color.md3.surface_container_highest : Color.md3.surface_container_low
+        color: root.expanded ? Colors.md3.surface_container_highest : Colors.md3.surface_container_low
         border.width: 1
-        border.color: Qt.rgba(Color.md3.outline_variant.r, Color.md3.outline_variant.g, Color.md3.outline_variant.b, 0.35)
+        border.color: Qt.rgba(Colors.md3.outline_variant.r, Colors.md3.outline_variant.g, Colors.md3.outline_variant.b, 0.35)
         implicitWidth: row.implicitWidth + 14
         clip: true
 
@@ -68,8 +68,8 @@ Item {
                     opacity: isActive ? 1 : root.expandProgress
                     scale: tap.pressed ? 0.88 : 1
                     color: isActive
-                           ? Color.md3.primary
-                           : (optHover.hovered ? Color.md3.surface_container_high : "transparent")
+                           ? Colors.md3.primary
+                           : (optHover.hovered ? Colors.md3.surface_container_high : "transparent")
 
                     Behavior on color { ColorAnimation { duration: 150 } }
                     Behavior on scale {
@@ -81,7 +81,7 @@ Item {
                         text: option.modelData.icon
                         font.family: "Jetbrains Mono Nerd Font Propo"
                         font.pixelSize: 13
-                        color: option.isActive ? Color.md3.on_primary : Color.md3.primary
+                        color: option.isActive ? Colors.md3.on_primary : Colors.md3.primary
                         opacity: option.opacity
                         visible: option.width > 4
                     }

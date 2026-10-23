@@ -135,8 +135,8 @@ PanelWindow {
         id: contentCard
         anchors.fill: parent
         radius: 16
-        color: Color.md3.surface_container_highest
-        border.color: Color.md3.outline_variant
+        color: Colors.md3.surface_container_highest
+        border.color: Colors.md3.outline_variant
         border.width: 1
         opacity: osdWindow.isShown ? 1.0 : 0.0
 
@@ -158,7 +158,7 @@ PanelWindow {
                 text: osdWindow.muted ? "󰝟" : (osdWindow.volPercent === 0 ? "󰕿" : (osdWindow.volPercent < 50 ? "󰖀" : "󰕾"))
                 font.family: "Jetbrains Mono Nerd Font Propo"
                 font.pixelSize: 22
-                color: osdWindow.muted ? Color.md3.error : Color.md3.primary
+                color: osdWindow.muted ? Colors.md3.error : Colors.md3.primary
             }
 
             ColumnLayout {
@@ -173,7 +173,7 @@ PanelWindow {
                         font.pixelSize: 12
                         font.bold: true
                         font.family: "Jetbrains Mono Nerd Font Propo"
-                        color: Color.md3.on_surface
+                        color: Colors.md3.on_surface
                     }
 
                     Item { Layout.fillWidth: true }
@@ -182,7 +182,7 @@ PanelWindow {
                         text: osdWindow.muted ? "Muted" : (osdWindow.volPercent + "%")
                         font.pixelSize: 12
                         font.family: "Jetbrains Mono Nerd Font Propo"
-                        color: osdWindow.muted ? Color.md3.error : Color.md3.on_surface_variant
+                        color: osdWindow.muted ? Colors.md3.error : Colors.md3.on_surface_variant
                     }
                 }
 
@@ -191,13 +191,13 @@ PanelWindow {
                     Layout.fillWidth: true
                     height: 6
                     radius: 3
-                    color: Color.md3.surface_variant
+                    color: Colors.md3.surface_variant
 
                     Rectangle {
                         width: osdWindow.muted ? 0 : Math.min(parent.width, parent.width * (osdWindow.volPercent / 100.0))
                         height: parent.height
                         radius: 3
-                        color: Color.md3.primary
+                        color: Colors.md3.primary
 
                         Behavior on width {
                             NumberAnimation { duration: 100; easing.type: Easing.OutQuad }
@@ -221,7 +221,7 @@ PanelWindow {
                 text: osdWindow.capsLockOn ? "󰬈" : "󰬈"
                 font.family: "Jetbrains Mono Nerd Font Propo"
                 font.pixelSize: 22
-                color: osdWindow.capsLockOn ? Color.md3.primary : Color.md3.outline
+                color: osdWindow.capsLockOn ? Colors.md3.primary : Colors.md3.outline
             }
 
             ColumnLayout {
@@ -236,7 +236,7 @@ PanelWindow {
                         font.pixelSize: 12
                         font.bold: true
                         font.family: "Jetbrains Mono Nerd Font Propo"
-                        color: Color.md3.on_surface
+                        color: Colors.md3.on_surface
                     }
 
                     Item { Layout.fillWidth: true }
@@ -245,7 +245,7 @@ PanelWindow {
                         text: osdWindow.capsLockOn ? "On" : "Off"
                         font.pixelSize: 12
                         font.family: "Jetbrains Mono Nerd Font Propo"
-                        color: osdWindow.capsLockOn ? Color.md3.primary : Color.md3.on_surface_variant
+                        color: osdWindow.capsLockOn ? Colors.md3.primary : Colors.md3.on_surface_variant
                     }
                 }
 
@@ -254,13 +254,13 @@ PanelWindow {
                     Layout.fillWidth: true
                     height: 6
                     radius: 3
-                    color: Color.md3.surface_variant
+                    color: Colors.md3.surface_variant
 
                     Rectangle {
                         width: osdWindow.capsLockOn ? parent.width : 0
                         height: parent.height
                         radius: 3
-                        color: Color.md3.primary
+                        color: Colors.md3.primary
 
                         Behavior on width {
                             NumberAnimation { duration: 150; easing.type: Easing.OutQuad }

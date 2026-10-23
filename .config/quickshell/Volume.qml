@@ -37,7 +37,7 @@ RowLayout {
 
     Text {
         text: volumeRoot.icon
-        color: volumeRoot.muted ? Color.md3.error : Color.md3.primary
+        color: volumeRoot.muted ? Colors.md3.error : Colors.md3.primary
         font.pixelSize: 14
         font.family: 'Jetbrains Mono Nerd Font Propo'
     }
@@ -48,7 +48,7 @@ RowLayout {
             if (volumeRoot.muted) return 'Muted'
             return volumeRoot.vol + '%'
         }
-        color: volumeRoot.muted ? Color.md3.error : Color.md3.on_surface
+        color: volumeRoot.muted ? Colors.md3.error : Colors.md3.on_surface
         font.pixelSize: 14
         font.family: 'Jetbrains Mono Nerd Font Propo'
     }
